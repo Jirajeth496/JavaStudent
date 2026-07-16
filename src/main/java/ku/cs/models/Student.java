@@ -5,10 +5,14 @@ public class Student {
     private String name;
     private double score;
 
-    public Student(String id, String name) {
+    public Student(String id, String name, double score) {
         this.id = id;
         this.name = name;
-        score = 0;
+        this.score = score;
+    }
+
+    public Student(String id, String name) {
+        this(id, name, 0);
     }
 
     public void changeName(String name) {
@@ -23,9 +27,7 @@ public class Student {
         }
     }
 
-    // TODO: design grading system for Student
-    public String grade()
-    {
+    public String grade() {
         return "F";
     }
 
@@ -47,11 +49,11 @@ public class Student {
 
     @Override
     public String toString() {
-        return "{" +
-                "id: '" + id + '\'' +
-                ", name: '" + name + '\'' +
-                ", score: " + score +
-                ", grade: " + grade() +
-                '}';
+        return "{"
+                + "id: '" + id + '\''
+                + ", name: '" + name + '\''
+                + ", score: " + score
+                + ", grade: " + grade()
+                + '}';
     }
 }

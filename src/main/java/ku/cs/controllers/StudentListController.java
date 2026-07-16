@@ -10,6 +10,10 @@ import ku.cs.models.Student;
 import ku.cs.models.StudentList;
 import ku.cs.services.FXRouter;
 import ku.cs.services.StudentHardCodeDatasource;
+import ku.cs.services.Datasource;
+import ku.cs.services.StudentListFileDatasource;
+import ku.cs.services.StudentListHardCodeDatasource;
+
 
 import java.io.IOException;
 
@@ -24,6 +28,7 @@ public class StudentListController {
 
     private StudentList studentList;
     private Student selectedStudent;
+    private Datasource<StudentList> datasource;
 
     @FXML
     public void initialize() {
@@ -35,7 +40,7 @@ public class StudentListController {
     }
 
     private void loadStudentData() {
-        StudentHardCodeDatasource datasource = new StudentHardCodeDatasource();
+        datasource = new StudentListFileDatasource("data", "student-list.csv");
         studentList = datasource.readData();
     }
 
@@ -98,6 +103,7 @@ public class StudentListController {
                 studentList.giveScoreToId(selectedStudent.getId(), score);
                 showStudentInfo(selectedStudent);
                 studentListView.refresh();
+                datasource.writeData(studentList);
             } catch (NumberFormatException e) {
                 errorMessage = "Please insert number value";
                 errorLabel.setText(errorMessage);
