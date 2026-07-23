@@ -20,6 +20,16 @@ public class StudentList {
         }
     }
 
+    public void addNewStudent(String id, String name, double score) {
+        id = id.trim();
+        name = name.trim();
+        if (!id.isEmpty() && !name.isEmpty()) {
+            Student exist = findStudentById(id);
+            if (exist == null) {
+                students.add(new Student(id, name, score));
+            }
+        }
+    }
     public Student findStudentById(String id) {
         for (Student student : students) {
             if (student.isId(id)) {

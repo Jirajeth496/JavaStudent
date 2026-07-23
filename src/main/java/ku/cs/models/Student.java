@@ -23,10 +23,15 @@ public class Student {
         }
     }
 
-    // TODO: design grading system for Student
-    public String grade()
-    {
-        return "F";
+    public String grade() {
+        if (score >= 80) return "A";
+        else if (score >= 75) return "B+";
+        else if (score >= 70) return "B";
+        else if (score >= 65) return "C+";
+        else if (score >= 60) return "C";
+        else if (score >= 55) return "D+";
+        else if (score >= 50) return "D";
+        else return "F";
     }
 
     public boolean isId(String id) {
@@ -54,4 +59,11 @@ public class Student {
                 ", grade: " + grade() +
                 '}';
     }
+
+    public Student(String id, String name, double score){
+        this.id =id;
+        this.name = name;
+        this.score = score;
+    }
+
 }

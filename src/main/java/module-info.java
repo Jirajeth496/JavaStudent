@@ -7,4 +7,6 @@ module ku.cs.hellofx {
     exports ku.cs.hellofx;
     exports ku.cs.controllers;
     opens ku.cs.controllers to javafx.fxml;
+    exports ku.cs.models;
+    opens ku.cs.models to javafx.base;
 }
